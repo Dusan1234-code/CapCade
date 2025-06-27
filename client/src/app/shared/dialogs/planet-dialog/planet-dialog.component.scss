@@ -1,0 +1,62 @@
+@import '../../../styles/variables';
+
+.new-planet-form {
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .new-planet-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 4px;
+    margin-top: 16px;
+  }
+
+  .photo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+      font-size: 14px;
+    }
+
+    input[type='file'] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    button {
+      position: relative;
+      background-color: $color-light-gray-4;
+    }
+  }
+
+  .new-planet-info-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+    margin-bottom: 40px;
+
+    .new-planet-form-row {
+      margin: 0;
+    }
+  }
+
+  .form-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+}

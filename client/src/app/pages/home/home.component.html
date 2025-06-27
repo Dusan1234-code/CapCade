@@ -1,0 +1,81 @@
+@let pageData = pageData$ | async; @if (loading()) {
+<p>Loading</p>
+} @if (pageData) { @if (viewService.tableView() === TableView.GRID) {
+<div class="box-wrapper">
+  @for (data of pageData; track data) {
+  <div class="box">
+    <img src="{{ data.imageUrl }}" alt="{{ data.imageName }}" />
+    <h2>{{ data.planetName }}</h2>
+    <p class="box-description-text">{{ data.description }}</p>
+    <div class="box-info-wrapper">
+      <div class="box-desc-wrapper">
+        <div>
+          <h3>{{ data.planetColor }}</h3>
+          <span>Color</span>
+        </div>
+        <div>
+          <h3>{{ data.planetRadiusKM }}</h3>
+          <span>Radius in km</span>
+        </div>
+      </div>
+      <div class="box-desc-wrapper">
+        <div>
+          <h3>{{ data.distInMillionsKM.fromSun }}</h3>
+          <span>Dist. from Sun</span>
+        </div>
+        <div>
+          <h3>{{ data.distInMillionsKM.fromEarth }}</h3>
+          <span>Dist. from Earth</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>
+} @else {
+<table mat-table [dataSource]="pageData" class="mat-elevation-z8" matSort>
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let planet">
+      <div class="planet-table-desc">
+        <img [src]="planet.imageUrl" [alt]="planet.planetName" width="60" />
+        <div>
+          <h2>
+            {{ planet.planetName }}
+          </h2>
+          <p>{{ planet.description }}</p>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Color">
+    <th mat-header-cell *matHeaderCellDef>Color</th>
+    <td mat-cell *matCellDef="let planet">{{ planet.planetColor }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Radius in km">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Radius in km</th>
+    <td mat-cell *matCellDef="let planet">{{ planet.planetRadiusKM }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Dist. from Sun">
+    <th mat-header-cell *matHeaderCellDef>Dist. from Sun</th>
+    <td mat-cell *matCellDef="let planet">
+      {{ planet.distInMillionsKM.fromSun }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Dis. from Earth">
+    <th mat-header-cell *matHeaderCellDef>Dist. from Earth</th>
+    <td mat-cell *matCellDef="let planet">
+      {{ planet.distInMillionsKM.fromEarth }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+} } @else {
+<p>No data available.</p>
+}

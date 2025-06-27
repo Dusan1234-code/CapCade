@@ -1,1 +1,108 @@
-/* You can add global styles to this file, and also import other style files */
+@import './app/styles/variables';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+main {
+  background-color: $color-light-gray;
+}
+
+.button,
+.button-secondary {
+  display: inline-block;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background-color: #4c396f;
+  cursor: pointer;
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: $color-light-gray-4;
+}
+
+.mat-mdc-form-field {
+  .mat-mdc-text-field-wrapper.mdc-text-field--filled {
+    height: auto;
+    border: 1px solid $color-light-gray-3;
+    background-color: transparent;
+    border-radius: 4px;
+    padding: 10px;
+    --mdc-filled-text-field-focus-active-indicator-color: transparent;
+    --mdc-filled-text-field-active-indicator-color: transparent;
+
+    .mat-mdc-form-field-infix {
+      padding: 0;
+      min-height: auto;
+    }
+
+    .mat-mdc-form-field-icon-prefix > .mat-icon {
+      padding: 0;
+    }
+  }
+
+  mat-icon {
+    color: $color-dark-gray;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+
+.mat-mdc-form-field input::placeholder {
+  color: $color-dark-gray !important;
+}
+
+form {
+  width: 500px;
+  padding: 28px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 12px;
+    font-weight: 400;
+    color: $color-light-gray-4;
+  }
+
+  .mat-mdc-form-field-infix {
+    padding: 0;
+  }
+
+  .mdc-text-field {
+    padding: 0;
+    min-height: auto;
+  }
+
+  .mat-mdc-form-field-flex {
+    input {
+      border: 1px solid $color-light-gray-3;
+      border-radius: 4px;
+
+      background-color: transparent;
+      width: 100%;
+    }
+  }
+}

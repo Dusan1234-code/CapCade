@@ -1,0 +1,16 @@
+<app-container>
+  <header>
+    <h1>Planets</h1>
+    <div class="header-search-wrapper">
+      <div>
+        <img src="assets/icons/table.svg" alt="Table icon" (click)="changeView(TableView.TABLE)" />
+        <img src="assets/icons/grid.svg" alt="Calendar icon" (click)="changeView(TableView.GRID)" />
+      </div>
+      <mat-form-field>
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput placeholder="Search..." type="text" />
+      </mat-form-field>
+      <button class="button" (click)="openDialog()">New planet</button>
+    </div>
+  </header>
+</app-container>

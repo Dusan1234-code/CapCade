@@ -1,0 +1,33 @@
+@import "../../../styles/variables";
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0;
+
+    .header-search-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        > div {
+            margin-right: 20px;
+
+            img {
+                width: 24px;
+                height: 24px;
+                cursor: pointer;
+
+                &:first-child {
+                    padding-right: 4px;
+                    border-right: 1px solid $color-light-gray-2;
+                }
+
+                &:last-child {
+                    padding-left: 4px;
+                }
+            }
+        }
+    }
+}
