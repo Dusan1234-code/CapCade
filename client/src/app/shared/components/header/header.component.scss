@@ -1,33 +1,59 @@
-@import "../../../styles/variables";
+@import '../../../styles/variables';
 
 header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0;
+
+  .header-search-wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 40px 0;
+    gap: 20px;
 
-    .header-search-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 20px;
+    > div {
+      margin-right: 20px;
 
-        > div {
-            margin-right: 20px;
+      button {
+        padding: 8px;
+        border-radius: 4px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
 
-            img {
-                width: 24px;
-                height: 24px;
-                cursor: pointer;
+        &.selected {
+          background-color: #d0dce1;
 
-                &:first-child {
-                    padding-right: 4px;
-                    border-right: 1px solid $color-light-gray-2;
-                }
-
-                &:last-child {
-                    padding-left: 4px;
-                }
-            }
+          & img {
+            color: #125169;
+          }
         }
+
+        mat-icon {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      button:first-child {
+        position: relative;
+        margin-right: 4px;
+      }
+
+      button:last-child {
+        margin-left: 4px;
+      }
+
+      button:first-child::after {
+        position: absolute;
+        content: '';
+        display: inline-block;
+        right: -4px;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background-color: $color-light-gray-2;
+      }
     }
+  }
 }

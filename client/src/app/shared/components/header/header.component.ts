@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class HeaderComponent {
   private readonly ViewService = inject(ViewService);
+  protected readonly tableView = this.ViewService.tableView;
   private readonly dialog = inject(MatDialog);
   TableView = TableView;
 
@@ -31,5 +32,12 @@ export class HeaderComponent {
 
   openDialog() {
     this.dialog.open(PlanetDialogComponent);
+  }
+
+  getViewType(viewType: TableView) {
+    if (viewType === this.ViewService.tableView()) {
+      return '';
+    }
+    return 'selected';
   }
 }

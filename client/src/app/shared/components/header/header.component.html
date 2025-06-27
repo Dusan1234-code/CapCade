@@ -3,8 +3,12 @@
     <h1>Planets</h1>
     <div class="header-search-wrapper">
       <div>
-        <img src="assets/icons/table.svg" alt="Table icon" (click)="changeView(TableView.TABLE)" />
-        <img src="assets/icons/grid.svg" alt="Calendar icon" (click)="changeView(TableView.GRID)" />
+        <button [ngClass]="getViewType(TableView.TABLE)" (click)="changeView(TableView.TABLE)">
+          <img src="assets/icons/table.svg" alt="Table icon" />
+        </button>
+        <button [ngClass]="getViewType(TableView.GRID)" (click)="changeView(TableView.GRID)">
+          <img src="assets/icons/grid.svg" alt="Calendar icon" />
+        </button>
       </div>
       <mat-form-field>
         <mat-icon matPrefix>search</mat-icon>
