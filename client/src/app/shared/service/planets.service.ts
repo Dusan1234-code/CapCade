@@ -18,6 +18,10 @@ export class PlanetsService {
     return this.http.get<Planet[]>(`${this.apiUrl}/planets/reload`);
   }
 
+  getPlanetById(id: number): Observable<Planet> {
+    return this.http.get<Planet>(`${this.apiUrl}/planets/${id}`);
+  }
+
   createPlanet(planet: any): Observable<Planet> {
     return this.http.post<Planet>(`${this.apiUrl}/planets`, planet);
   }

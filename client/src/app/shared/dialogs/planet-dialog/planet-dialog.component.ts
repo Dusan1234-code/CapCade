@@ -56,7 +56,6 @@ export class PlanetDialogComponent {
     formData.append('description', description ?? '');
 
     formData.append('distInMillionsKM', JSON.stringify(distInMillionsKM));
-    console.log(formData);
 
     this.planetsService
       .createPlanet(formData)
