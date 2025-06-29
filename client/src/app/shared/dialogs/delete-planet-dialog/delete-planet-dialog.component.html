@@ -1,0 +1,11 @@
+<div class="delete-planet-wrapper">
+  <img src="assets/icons/warning.svg" alt="Warning icon" />
+  <h3>Confirm editing</h3>
+  <p>
+    Are you sure you want to edit <span class="bold"> {{ planet?.planetName }} </span>?
+  </p>
+  <div class="delete-button-wrapper">
+    <button type="button" class="button dark-blue" (click)="deletePlanet()">Confirm</button>
+    <button type="button" class="button secondary" (click)="closeDialog()">Cancel</button>
+  </div>
+</div>

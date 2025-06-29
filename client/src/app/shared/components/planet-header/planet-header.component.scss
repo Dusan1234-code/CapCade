@@ -1,0 +1,14 @@
+@import '../../../styles/variables';
+.planet-btn-wrapper {
+  display: flex;
+  gap: 20px;
+
+  button {
+    min-width: 120px;
+
+    &.gray {
+      color: $color-blue;
+      background-color: $color-blue-light;
+    }
+  }
+}
