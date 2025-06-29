@@ -22,10 +22,10 @@ header {
         cursor: pointer;
 
         &.selected {
-          background-color: #d0dce1;
+          background-color: $color-blue-light;
 
           & img {
-            color: #125169;
+            color: $color-blue;
           }
         }
 

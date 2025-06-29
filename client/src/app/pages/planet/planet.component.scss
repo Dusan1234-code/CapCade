@@ -1,2 +1,74 @@
-header {
+@import '../../styles/variables';
+
+.planet-wrapper {
+  background-color: $color-light-gray;
+  padding-top: 32px;
+  height: 100vh;
+
+  .planet-box {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .planet-desc-wrapper {
+    background-color: $color-white;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    border-radius: 8px;
+    flex-basis: 100%;
+
+    img {
+      width: 180px;
+      height: 180px;
+    }
+
+    > div {
+      h3 {
+        font-size: 36px;
+        font-weight: 600;
+        color: $color-dark-gray;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 14px;
+        font-weight: 400;
+        color: $color-light-gray-4;
+        width: 320px;
+      }
+    }
+  }
+
+  .planet-number-wrapper {
+    display: grid;
+    grid-template-columns: 4fr 3fr;
+    gap: 20px;
+
+    .planet-number-box {
+      background-color: $color-white;
+      text-align: center;
+      border-radius: 8px;
+      padding: 40px 120px;
+
+      &:nth-child(2),
+      &:nth-child(4) {
+        padding: 37px 60px;
+      }
+
+      h4 {
+        font-size: 24px;
+        font-weight: 500;
+        color: $color-dark-gray;
+      }
+
+      span {
+        font-size: 12px;
+        font-weight: 400;
+        color: $color-light-gray-4;
+      }
+    }
+  }
 }

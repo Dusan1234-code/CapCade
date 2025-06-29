@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { PlanetsService } from '../../service/planets.service';
@@ -19,18 +19,31 @@ export class PlanetDialogComponent {
   private readonly planetsService = inject(PlanetsService);
   private readonly viewService = inject(ViewService);
 
-  private readonly destroy$ = new Subject<void>();
   private readonly dialogRef = inject(MatDialogRef<PlanetDialogComponent>);
 
   protected form = new FormGroup({
     imageUrl: new FormControl<File | null>(null, [Validators.required]),
-    planetName: new FormControl<string | null>(null, [Validators.email, Validators.required]),
+    planetName: new FormControl<string | null>(null, [Validators.required]),
     description: new FormControl<string | null>(null, [Validators.required]),
     planetRadiusKM: new FormControl<number | null>(null, [Validators.required]),
     planetColor: new FormControl<string | null>(null, [Validators.required]),
     fromSun: new FormControl<string | null>(null),
     fromEarth: new FormControl<string | null>(null, [Validators.required])
   });
+
+  constructor(@Inject(MAT_DIALOG_DATA) public planetData: Planet | undefined) {
+    if (planetData) {
+      this.form = new FormGroup({
+        imageUrl: new FormControl<File | null>(null, [Validators.required]),
+        planetName: new FormControl<string | null>(planetData?.planetName ?? null, [Validators.required]),
+        description: new FormControl<string | null>(planetData?.description ?? null, [Validators.required]),
+        planetRadiusKM: new FormControl<number | null>(planetData?.planetRadiusKM ?? null, [Validators.required]),
+        planetColor: new FormControl<string | null>(planetData?.planetColor ?? null, [Validators.required]),
+        fromSun: new FormControl<string | null>(planetData?.distInMillionsKM?.fromSun?.toString() ?? null),
+        fromEarth: new FormControl<string | null>(planetData?.distInMillionsKM?.fromEarth?.toString() ?? null, [Validators.required])
+      });
+    }
+  }
 
   onFileSelected(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0] || null;
@@ -41,12 +54,12 @@ export class PlanetDialogComponent {
     this.dialogRef.close();
   }
 
-  submitForm() {
+  createPlanet() {
     const formData = new FormData();
     const { planetName, planetColor, planetRadiusKM, description, imageUrl, fromSun, fromEarth } = this.form.value;
     const distInMillionsKM = {
-      fromSun: Number(fromSun) ?? 0,
-      fromEarth: Number(fromEarth) ?? 0
+      fromSun: Number(fromSun) || 0,
+      fromEarth: Number(fromEarth) || 0
     };
 
     formData.append('file', imageUrl ?? '');
@@ -65,9 +78,20 @@ export class PlanetDialogComponent {
             this.closeDialog();
             this.viewService.setReloadPlanets(true);
           }
-        }),
-        takeUntil(this.destroy$)
+        })
       )
       .subscribe();
+  }
+
+  updatePlanet() {
+    console.log('object');
+  }
+
+  submitForm() {
+    if (this.planetData) {
+      this.updatePlanet();
+    } else {
+      this.createPlanet();
+    }
   }
 }

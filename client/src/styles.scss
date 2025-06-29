@@ -34,9 +34,18 @@ main {
   cursor: pointer;
 }
 
-.button-secondary {
+.button.secondary {
   background-color: transparent;
   color: $color-light-gray-4;
+}
+
+.button.dark-blue {
+  background-color: $color-dark-blue;
+  color: $color-white;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .mat-mdc-form-field {

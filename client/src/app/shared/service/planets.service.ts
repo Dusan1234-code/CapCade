@@ -8,21 +8,21 @@ import { Observable } from 'rxjs';
 })
 export class PlanetsService {
   private readonly http = inject(HttpClient);
-  private readonly apiUrl = 'http://localhost:3001/api';
+  private readonly apiUrl = 'http://localhost:3001/api/planets';
 
   getPlanets(): Observable<Planet[]> {
-    return this.http.get<Planet[]>(`${this.apiUrl}/planets`);
-  }
-
-  reloadPlanets(): Observable<Planet[]> {
-    return this.http.get<Planet[]>(`${this.apiUrl}/planets/reload`);
+    return this.http.get<Planet[]>(this.apiUrl);
   }
 
   getPlanetById(id: number): Observable<Planet> {
-    return this.http.get<Planet>(`${this.apiUrl}/planets/${id}`);
+    return this.http.get<Planet>(`${this.apiUrl}/${id}`);
   }
 
   createPlanet(planet: any): Observable<Planet> {
-    return this.http.post<Planet>(`${this.apiUrl}/planets`, planet);
+    return this.http.post<Planet>(`${this.apiUrl}`, planet);
+  }
+
+  deletePlanet(id: number): Observable<Planet[]> {
+    return this.http.delete<Planet[]>(`${this.apiUrl}/${id}`);
   }
 }

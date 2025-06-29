@@ -1,41 +1,38 @@
 @let pageData = pageData$ | async; @if(pageData) {
 
-<header>
+<app-planet-header [planetData]="pageData" />
+<div class="planet-wrapper">
   <app-container>
-    <h2>{{ pageData.planetName }}22</h2>
     <div>
-      <button></button>
-      <button></button>
+      <div class="planet-box">
+        <div class="planet-desc-wrapper">
+          <img [src]="pageData.imageUrl" [alt]="pageData.imageName" />
+          <div>
+            <h3>{{ pageData.planetName }}</h3>
+            <p>{{ pageData.description }}</p>
+          </div>
+        </div>
+        <div class="planet-number-wrapper">
+          <div class="planet-number-box">
+            <h4>{{ pageData.planetRadiusKM }}</h4>
+            <span>Radius in km</span>
+          </div>
+
+          <div class="planet-number-box">
+            <h4>{{ pageData.distInMillionsKM.fromSun }}</h4>
+            <span>Dist. from Sun</span>
+          </div>
+          <div class="planet-number-box">
+            <h4>{{ pageData.planetColor }}</h4>
+            <span>Color</span>
+          </div>
+          <div class="planet-number-box">
+            <h4>{{ pageData.distInMillionsKM.fromEarth }}</h4>
+            <span>Dist. from Earth</span>
+          </div>
+        </div>
+      </div>
     </div>
   </app-container>
-</header>
-<app-container>
-  <div>
-    <div>
-      <img src="" alt="" />
-      <div>
-        <h3></h3>
-        <p></p>
-      </div>
-    </div>
-    <div>
-      <div>
-        <h4></h4>
-        <span></span>
-      </div>
-      <div>
-        <h4></h4>
-        <span></span>
-      </div>
-      <div>
-        <h4></h4>
-        <span></span>
-      </div>
-      <div>
-        <h4></h4>
-        <span></span>
-      </div>
-    </div>
-  </div>
-</app-container>
+</div>
 }

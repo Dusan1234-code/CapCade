@@ -3,7 +3,7 @@
 } @if (pageData) { @if (viewService.tableView() === TableView.GRID) {
 <div class="box-wrapper">
   @for (data of pageData; track data) {
-  <div class="box">
+  <div class="box" [routerLink]="['/planet', data.id]">
     <img src="{{ data.imageUrl }}" alt="{{ data.imageName }}" />
     <h2>{{ data.planetName }}</h2>
     <p class="box-description-text">{{ data.description }}</p>
@@ -38,7 +38,7 @@
     <th mat-header-cell *matHeaderCellDef>Name</th>
     <td mat-cell *matCellDef="let planet">
       <div class="planet-table-desc">
-        <img [src]="planet.imageUrl" [alt]="planet.planetName" width="60" />
+        <img [src]="planet.imageUrl" [alt]="planet.planetName" width="60" [routerLink]="['/planet', planet.id]" />
         <div>
           <h2>
             {{ planet.planetName }}

@@ -1,4 +1,4 @@
 export enum TableView {
-    GRID = 'grid',
-    TABLE = 'table',
+  GRID = 'grid',
+  TABLE = 'table'
 }

@@ -1,19 +1,20 @@
 import { TableView } from './../../shared/models/general';
 import { Component, inject, signal, ViewChild } from '@angular/core';
 import { PlanetsService } from '../../shared/service/planets.service';
-import { catchError, filter, finalize, of, switchMap, tap } from 'rxjs';
+import { catchError, filter, finalize, of, startWith, switchMap, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ViewService } from '../../shared/service/view.service';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { Planet } from '../../shared/models/planet';
 import { toObservable } from '@angular/core/rxjs-interop';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [CommonModule, MatTableModule, MatSortModule],
+  imports: [CommonModule, MatTableModule, MatSortModule, RouterModule],
   standalone: true
 })
 export class HomeComponent {
@@ -29,6 +30,7 @@ export class HomeComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   protected readonly pageData$ = toObservable(this.viewService.shouldReloadPlanets).pipe(
+    startWith(true),
     filter(reload => reload),
     tap(() => this.loading.set(true)),
     switchMap(() => {

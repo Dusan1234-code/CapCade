@@ -9,6 +9,7 @@
     padding: 20px 28px;
     background-color: $color-white;
     text-align: center;
+    cursor: pointer;
 
     img {
       border-radius: 50%;
@@ -83,6 +84,7 @@ table {
         width: 60px;
         height: 60px;
         border-radius: 50%;
+        cursor: pointer;
       }
 
       > div {

@@ -2,6 +2,9 @@
   <h2>New Planet</h2>
   <div class="new-planet-form-row photo">
     <label for="name">Photo</label>
+    @if(form.controls.imageUrl.value) {
+    <span>{{ form.controls.imageUrl.value.name }}</span>
+    }
     <button class="button" type="button">
       Browse...
       <input id="photo" type="file" (change)="onFileSelected($event)" />
@@ -46,7 +49,7 @@
     </div>
   </div>
   <div class="form-button-wrapper">
-    <button class="button" type="button" (click)="submitForm()">Create</button>
-    <button class="button-secondary" type="button" (click)="closeDialog()">Cancel</button>
+    <button class="button dark-blue" type="button" (click)="submitForm()">{{ planetData ? 'Confirm' : 'Create' }}</button>
+    <button class="button secondary" type="button" (click)="closeDialog()">Cancel</button>
   </div>
 </form>

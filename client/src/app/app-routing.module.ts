@@ -5,14 +5,18 @@ import { MainLayoutComponent } from './shared/components/main-layout/main-layout
 import { PlanetComponent } from './pages/planet/planet.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/planets', pathMatch: 'full' },
+  {
+    path: '',
+    redirectTo: 'planets',
+    pathMatch: 'full'
+  },
   {
     path: 'planets',
     component: MainLayoutComponent,
     children: [{ path: '', component: HomeComponent }]
   },
   {
-    path: 'planets/:id',
+    path: 'planet/:id',
     component: PlanetComponent
   }
 ];
