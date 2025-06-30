@@ -1,9 +1,8 @@
 @if(planetData?.planetName) {
 <app-container>
   <header>
-    <h2>{{ planetData?.planetName }}</h2>
+    <h2 [routerLink]="['/']">{{ planetData?.planetName }}</h2>
     <div class="planet-btn-wrapper">
-      <button class="button gray" [routerLink]="['/']">Home</button>
       <button class="button gray" (click)="openEditDialog()">Edit</button>
       <button class="button" (click)="openDeleteDialog()">Delete</button>
     </div>

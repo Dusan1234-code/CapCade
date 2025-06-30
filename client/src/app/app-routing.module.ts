@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
+import { PlanetsComponent } from './pages/planets/planets.component';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { PlanetComponent } from './pages/planet/planet.component';
 
@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'planets',
     component: MainLayoutComponent,
-    children: [{ path: '', component: HomeComponent }]
+    children: [{ path: '', component: PlanetsComponent }]
   },
   {
     path: 'planet/:id',

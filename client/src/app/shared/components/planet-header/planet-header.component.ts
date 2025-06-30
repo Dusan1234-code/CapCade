@@ -19,6 +19,7 @@ export class PlanetHeaderComponent {
   private readonly dialog = inject(MatDialog);
 
   openEditDialog() {
+    console.log(this.planetData);
     this.dialog.open(PlanetDialogComponent, { data: this.planetData });
   }
 

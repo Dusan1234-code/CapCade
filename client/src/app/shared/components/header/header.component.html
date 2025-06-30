@@ -12,7 +12,7 @@
       </div>
       <mat-form-field>
         <mat-icon matPrefix>search</mat-icon>
-        <input matInput placeholder="Search..." type="text" />
+        <input matInput [formControl]="searchControl" placeholder="Search..." type="text" />
       </mat-form-field>
       <button class="button" (click)="openDialog()">New planet</button>
     </div>

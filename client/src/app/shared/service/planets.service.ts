@@ -18,8 +18,12 @@ export class PlanetsService {
     return this.http.get<Planet>(`${this.apiUrl}/${id}`);
   }
 
-  createPlanet(planet: any): Observable<Planet> {
+  createPlanet(planet: FormData): Observable<Planet> {
     return this.http.post<Planet>(`${this.apiUrl}`, planet);
+  }
+
+  updatePlanet(planet: FormData, id: number): Observable<Planet> {
+    return this.http.put<Planet>(`${this.apiUrl}/${id}`, planet);
   }
 
   deletePlanet(id: number): Observable<Planet[]> {
